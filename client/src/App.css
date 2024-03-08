@@ -1,0 +1,113 @@
+body {
+  margin: 0;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #BAD7E9;
+  width: 100vw;
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 15vh;
+}
+
+.waldoHeaderImg {
+  height: 100%;
+  cursor: pointer;
+}
+
+.headerButtons {
+
+}
+
+.games {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  width: auto;
+}
+
+.beachMiniContainer {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.beachMiniContainer > h2 {
+  margin: 0;
+  width: fit-content;
+  padding-left: 2px;
+}
+
+.beachMiniImg {
+  height: 400px;
+  width: 400px;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+.beachMain {
+  display: flex;
+  flex-direction: column;
+  background-color: #BAD7E9;
+  width: 100vw;
+}
+
+.beachContainer {
+  display: flex;
+  justify-content: center;
+  height: 85vh;
+  width: 100vw;
+  position: relative;
+}
+
+.beachImgContainer {
+  position: relative;
+  width: 85%;
+  padding-bottom: 85%; /* This ensures a 1:1 aspect ratio */
+  height: 0; /* To maintain the aspect ratio */
+}
+
+.beachImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.charactersContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 85vh;
+
+}
+
+.waldoImg, .wizardImg, .odlawImg {
+  height: 115px;
+}
+
+.characterContainer > h2 {
+  margin: 0;
+  width: fit-content;
+}
+
+@media screen and (max-width: 1024px) {
+  .beachContainer {
+    flex-direction: column;
+  }
+  .beachImg {
+    width: 100vw;
+  }
+}
