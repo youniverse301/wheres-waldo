@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import '../App.css'
 import waldoHeader from '../images/waldo-header.png'
@@ -10,15 +10,88 @@ import odlawImg from '../images/odlawImg.gif'
 
 export function Beach() {
     const imageRef = useRef(null);
-    const [clickCoordinates, setClickCoordinates] = useState(null);
+    const divRef = useRef(null);
+    const [clickCoordinates, setClickCoordinates] = useState([]);
+    const [divs, setDivs] = useState([]);
+    const correctCoordinates = { x: 820, y: 420 };
+    const correctCoordinates2 = { x: 360, y: 397 };
+    const correctCoordinates3 = { x: 143, y: 403 };
+
 
     const handleClick = (event)  => {
         const imageRect = imageRef.current.getBoundingClientRect();
         const x = event.clientX -imageRect.left;
         const y = event.clientY - imageRect.top;
-        setClickCoordinates({ x,y })
-        console.log(clickCoordinates)
+        const newCoordinates = { x, y };
+        setClickCoordinates(prevCoordinates => [...prevCoordinates, newCoordinates]);
+        function handleWaldoClick() {
+            console.log(newCoordinates)
+            if (isWithinRange(x, y, correctCoordinates)) {
+                console.log('in')
+                divRef.current.parentNode.removeChild(divRef.current);
+              } else {
+                console.log("no")
+                divRef.current.parentNode.removeChild(divRef.current);
+              }
+        }
+        function handleWizardClick() {
+            console.log(newCoordinates)
+            if (isWithinRange(x, y, correctCoordinates2)) {
+                console.log('in')
+                divRef.current.parentNode.removeChild(divRef.current);
+              } else {
+                console.log("no")
+                divRef.current.parentNode.removeChild(divRef.current);
+              }
+        }
+        function handleOdlawClick() {
+            console.log(newCoordinates)
+            if (isWithinRange(x, y, correctCoordinates3)) {
+                console.log('in')
+                divRef.current.parentNode.removeChild(divRef.current);
+              } else {
+                console.log("no")
+                divRef.current.parentNode.removeChild(divRef.current);
+              }
+        }
+
+        if (divRef.current && divRef.current.parentNode) {
+            divRef.current.parentNode.removeChild(divRef.current);
+        } else {
+            setDivs([
+                ...divs,
+                <div
+                key={divs.length}
+                ref={divRef}         
+                  className='targetBox'
+                  style={{
+                    position: 'absolute',
+                    left: x - 50 / 2,
+                    top: y - 50 / 2,
+                    width: '50px',
+                    height: '50px',
+                    border: '3px solid red',
+                  }}
+                >
+                  <div className='test3' onClick={handleOdlawClick}>Odlaw</div>
+                  <div className='test2' onClick={handleWizardClick}>Wizard</div>
+                  <div className='test' onClick={handleWaldoClick}>Waldo</div>
+                </div>,
+                ]);
+              console.log(divRef.current)
+        }
     }
+
+    useEffect(() => {
+        console.log(clickCoordinates);
+    }, [clickCoordinates]);
+
+    function isWithinRange(x, y, coords) {
+        const range = 30;
+        const diffX = Math.abs(x - coords.x);
+        const diffY = Math.abs(y - coords.y);
+        return diffX <= range && diffY <= range;
+      }
 
   return (
     <div className='beachMain'>
@@ -46,6 +119,7 @@ export function Beach() {
             </div>
             <div className='beachContainer'>
                 <img ref={imageRef} className='beachImg' src={beachImg} onClick={handleClick}></img>
+                {divs}
             </div>
         </div>
     </div>

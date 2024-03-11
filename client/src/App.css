@@ -73,8 +73,8 @@ body {
 .beachImgContainer {
   position: relative;
   width: 85%;
-  padding-bottom: 85%; /* This ensures a 1:1 aspect ratio */
-  height: 0; /* To maintain the aspect ratio */
+  padding-bottom: 85%;
+  height: 0; 
 }
 
 .beachImg {
@@ -101,6 +101,40 @@ body {
 .characterContainer > h2 {
   margin: 0;
   width: fit-content;
+}
+
+.targetBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.test, .test3 {
+  background-color: blue;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  cursor: pointer;
+}
+
+.test {
+  margin-bottom: -35px;
+}
+
+.test2 {
+  margin-bottom: -60px;
+  background-color: blue;
+  padding-left: 13px;
+  padding-right: 13px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  cursor: pointer;
+}
+
+.test3 {
+  margin-bottom: -60px;
 }
 
 @media screen and (max-width: 1024px) {
