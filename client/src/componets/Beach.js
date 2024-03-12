@@ -13,17 +13,20 @@ export function Beach() {
     const divRef = useRef(null);
     const [clickCoordinates, setClickCoordinates] = useState([]);
     const [divs, setDivs] = useState([]);
-    const correctCoordinates = { x: 820, y: 420 };
-    const correctCoordinates2 = { x: 360, y: 397 };
-    const correctCoordinates3 = { x: 143, y: 403 };
+    const correctCoordinates = { x: 1859, y: 747 };
+    const correctCoordinates2 = { x: 815, y: 702 };
+    const correctCoordinates3 = { x: 321, y: 707 };
 
 
     const handleClick = (event)  => {
         const imageRect = imageRef.current.getBoundingClientRect();
-        const x = event.clientX -imageRect.left;
-        const y = event.clientY - imageRect.top;
+        const xPercentage = (event.clientX - imageRect.left) / imageRect.width;
+        const yPercentage = (event.clientY - imageRect.top) / imageRect.height;
+        const x = xPercentage * imageRef.current.naturalWidth;
+        const y = yPercentage * imageRef.current.naturalHeight;
         const newCoordinates = { x, y };
         setClickCoordinates(prevCoordinates => [...prevCoordinates, newCoordinates]);
+        
         function handleWaldoClick() {
             console.log(newCoordinates)
             if (isWithinRange(x, y, correctCoordinates)) {
@@ -58,6 +61,8 @@ export function Beach() {
         if (divRef.current && divRef.current.parentNode) {
             divRef.current.parentNode.removeChild(divRef.current);
         } else {
+            const roundedX = Math.round(x);
+const roundedY = Math.round(y);
             setDivs([
                 ...divs,
                 <div
@@ -66,8 +71,8 @@ export function Beach() {
                   className='targetBox'
                   style={{
                     position: 'absolute',
-                    left: x - 50 / 2,
-                    top: y - 50 / 2,
+                    left: event.clientX - imageRect.left - 25,
+                    top: event.clientY - imageRect.top -25,
                     width: '50px',
                     height: '50px',
                     border: '3px solid red',
@@ -87,7 +92,7 @@ export function Beach() {
     }, [clickCoordinates]);
 
     function isWithinRange(x, y, coords) {
-        const range = 30;
+        const range = 50;
         const diffX = Math.abs(x - coords.x);
         const diffY = Math.abs(y - coords.y);
         return diffX <= range && diffY <= range;
