@@ -13,9 +13,20 @@ export function Beach() {
     const divRef = useRef(null);
     const [clickCoordinates, setClickCoordinates] = useState([]);
     const [divs, setDivs] = useState([]);
+    const [charCoords, setCharCoords] = useState([{}])
     const correctCoordinates = { x: 1859, y: 747 };
     const correctCoordinates2 = { x: 815, y: 702 };
     const correctCoordinates3 = { x: 321, y: 707 };
+
+    useEffect(() => {
+        fetch("/data").then(
+            response => response.json()
+        ).then(
+            data => {
+                setCharCoords(data)
+            }
+        )
+    }, [])
 
 
     const handleClick = (event)  => {
@@ -26,10 +37,10 @@ export function Beach() {
         const y = yPercentage * imageRef.current.naturalHeight;
         const newCoordinates = { x, y };
         setClickCoordinates(prevCoordinates => [...prevCoordinates, newCoordinates]);
-        
+                
         function handleWaldoClick() {
             console.log(newCoordinates)
-            if (isWithinRange(x, y, correctCoordinates)) {
+            if (isWithinRange(x, y, charCoords[0])) {
                 console.log('in')
                 divRef.current.parentNode.removeChild(divRef.current);
               } else {
@@ -39,7 +50,7 @@ export function Beach() {
         }
         function handleWizardClick() {
             console.log(newCoordinates)
-            if (isWithinRange(x, y, correctCoordinates2)) {
+            if (isWithinRange(x, y, charCoords[1])) {
                 console.log('in')
                 divRef.current.parentNode.removeChild(divRef.current);
               } else {
@@ -49,7 +60,7 @@ export function Beach() {
         }
         function handleOdlawClick() {
             console.log(newCoordinates)
-            if (isWithinRange(x, y, correctCoordinates3)) {
+            if (isWithinRange(x, y, charCoords[2])) {
                 console.log('in')
                 divRef.current.parentNode.removeChild(divRef.current);
               } else {
@@ -61,8 +72,6 @@ export function Beach() {
         if (divRef.current && divRef.current.parentNode) {
             divRef.current.parentNode.removeChild(divRef.current);
         } else {
-            const roundedX = Math.round(x);
-const roundedY = Math.round(y);
             setDivs([
                 ...divs,
                 <div
@@ -101,7 +110,9 @@ const roundedY = Math.round(y);
   return (
     <div className='beachMain'>
         <div className='header'>
-            <img className='waldoHeaderImg' src={waldoHeader} alt='Main in red and white striped hat in shirt with round glasses next to sign that reads Wheres Waldo?'></img>
+            <Link to="/" className='waldoHeaderImg'>
+                <img className='waldoHeaderImg' src={waldoHeader} alt='Main in red and white striped hat in shirt with round glasses next to sign that reads Wheres Waldo?'></img>
+            </Link>
             <div className='headerBtns'>
                 <button className='homeBtn'>Home</button>
                 <button className='leaderboardBtn'>Leaderboard</button>
