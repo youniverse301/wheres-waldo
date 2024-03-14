@@ -122,7 +122,7 @@ body {
   justify-content: flex-end;
 }
 
-.test, .test3 {
+.waldoBtn, .odlawBtn {
   background-color: blue;
   padding-left: 15px;
   padding-right: 15px;
@@ -131,11 +131,11 @@ body {
   cursor: pointer;
 }
 
-.test {
+.waldoBtn {
   margin-bottom: -35px;
 }
 
-.test2 {
+.wizardBtn {
   margin-bottom: -60px;
   background-color: blue;
   padding-left: 13px;
@@ -145,8 +145,20 @@ body {
   cursor: pointer;
 }
 
-.test3 {
+.odlawBtn {
   margin-bottom: -60px;
+}
+
+.hidden {
+  display: none;
+}
+
+.winScreenContainer {
+  
+}
+
+.nicknameForm {
+  display: flex;
 }
 
 @media screen and (max-width: 1024px) {

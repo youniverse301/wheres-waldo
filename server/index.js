@@ -5,6 +5,7 @@ const router = require('./routes/router')
 require("dotenv").config()
 const mongoose = require("mongoose")
 const dataRouter = require("./routes/dataRouter")
+const scoresRouter = require("./routes/scoresRouter")
 
 
 const mongoDb = process.env.MONGODB_URL;
@@ -31,6 +32,8 @@ const corsOptions = {
 app.use(cors(corsOptions))
 app.use('/', router)
 app.use('/data', dataRouter)
+app.use('/scores', scoresRouter)
+  
 
 const port = 4000
 const server = app.listen(port, () => {
