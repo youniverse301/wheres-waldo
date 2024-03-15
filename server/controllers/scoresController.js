@@ -6,8 +6,7 @@ const router = express.Router()
 exports.createScore = async (req, res) => {
     const dataFromReact = req.body;
     console.log(dataFromReact);
-    const newScore = await Score.create(req.body);
-    res.status(201).json(newScore);
+    await Score.create(req.body);
     res.send('Data received successfully!');
 }
 

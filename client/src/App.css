@@ -8,7 +8,7 @@ body {
   justify-content: space-between;
   background-color: #BAD7E9;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .header {
@@ -20,7 +20,6 @@ body {
 
 .waldoHeaderImg {
   height: 100%;
-  cursor: pointer;
 }
 
 .headerButtons {
@@ -33,7 +32,7 @@ body {
   align-self: center;
   flex-wrap: wrap;
   gap: 15px;
-  width: auto;
+  height: 100%;
 }
 
 .beachMiniContainer {
@@ -53,6 +52,12 @@ body {
   width: 400px;
   border-radius: 15px;
   object-fit: cover;
+}
+
+.gameTextContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .beachMain {
@@ -162,6 +167,15 @@ body {
 }
 
 @media screen and (max-width: 1024px) {
+  .beachContainer {
+    flex-direction: column;
+  }
+  .beachImg {
+    width: 100vw;
+  }
+}
+
+@media screen and (max-width: 1439px) {
   .beachContainer {
     flex-direction: column;
   }
