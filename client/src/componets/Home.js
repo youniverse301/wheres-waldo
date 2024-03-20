@@ -75,10 +75,10 @@ export function Home() {
       <div className='header'>
             <img className='waldoHeaderImg' src={waldoHeader} alt='Main in red and white striped hat in shirt with round glasses next to sign that reads Wheres Waldo?'></img>
             <div className='headerBtns'>
-                <Link to="/">
+                <Link to="/" className='navBtn'>
                     <button className='homeBtn'>Home</button>
                 </Link>
-                <Link to="/leaderboard">
+                <Link to="/leaderboard" className='navBtn'>
                     <button className='leaderboardBtn'>Leaderboard</button>
                 </Link>
             </div>

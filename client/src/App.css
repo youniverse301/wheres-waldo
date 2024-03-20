@@ -1,4 +1,13 @@
+@font-face {
+  font-family: Optima;
+  src: url('./fonts/OptimaExtraBlack/Optima\ ExtraBlack.ttf');
+}
+
 body {
+  margin: 0;
+}
+
+h2 {
   margin: 0;
 }
 
@@ -20,10 +29,6 @@ body {
 
 .waldoHeaderImg {
   height: 100%;
-}
-
-.headerButtons {
-
 }
 
 .games {
@@ -52,12 +57,28 @@ body {
   width: 400px;
   border-radius: 25px;
   object-fit: cover;
+  border: 2px solid #ED2724;
 }
 
 .gameTextContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: 'Optima', 'Courier New', Courier, monospace;
+  color: #2B2A2A;
+  padding-top: 10px;
+}
+
+.gameTextContainer > a {
+  text-decoration: none;
+  color: inherit;
+  text-decoration: underline;
+  font-size: 1.3rem;
+}
+
+.gameTextContainer > a:hover {
+  color: #ED2724;
+  transition: color 0.3s ease;
 }
 
 .beachMain {
@@ -168,6 +189,31 @@ body {
 
 .gameLeaderboard {
   cursor: pointer;
+  padding-top: 15px;
+}
+
+.gameLeaderboard:hover {
+  color: #ED2724;
+  transition: color 0.3s ease;
+}
+
+.headerBtns {
+  display: flex;
+  padding-right: 25px;
+  gap: 20px;
+}
+
+.homeBtn, .leaderboardBtn {
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: 'Optima', 'Courier New', Courier, monospace;
+  font-size: 1.3rem;
+}
+
+.homeBtn:hover, .leaderboardBtn:hover {
+  color: #ED2724;
+  transition: color 0.3s ease;
 }
 
 .slide-down {
@@ -199,6 +245,42 @@ body {
     transform: translateY(20px);
   }
 }
+
+.navBtn {
+  cursor: pointer;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% + 4px), 0 calc(100% + 4px));
+  display: block;
+  padding: 2px 0;
+  position: relative;
+}
+
+.navBtn:before {
+  background: black;
+  bottom: -3px;
+  content: "";
+  display: block;
+  height: 3px;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+}
+
+.navBtn:hover {
+  color: #ED2724;
+}
+
+.navBtn:hover:before {
+  animation: slide 0.5s ease;
+  background: #ED2724;
+}
+
+@keyframes slide {
+  0%, to { transform: translateX(0); }
+  50% { transform: translateX(100%); }
+  51% { transform: translateX(-100%); }
+}
+
 
 @media screen and (max-width: 1024px) {
   .gameContainer {
