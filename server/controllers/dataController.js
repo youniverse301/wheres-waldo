@@ -13,12 +13,32 @@ exports.createData = async (req, res) => {
       }
 }
 
-exports.getData = async (req, res) => {
+exports.getDataBeach = async (req, res) => {
     try {
-        const data = await Data.find({});
+        const data = await Data.find({ game: 'beach' });
         res.json(data);
       } catch (error) {
         console.error('Error finding data:', error);
         res.status(500).json({ error: 'Internal server error' });
       }
+}
+
+exports.getDataFactory = async (req, res) => {
+  try {
+      const data = await Data.find({ game: 'factory' });
+      res.json(data);
+    } catch (error) {
+      console.error('Error finding data:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+}
+
+exports.getDataSkislope = async (req, res) => {
+  try {
+      const data = await Data.find({ game: 'skislope' });
+      res.json(data);
+    } catch (error) {
+      console.error('Error finding data:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
 }

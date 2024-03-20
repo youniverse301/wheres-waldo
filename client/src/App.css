@@ -33,24 +33,24 @@ body {
   flex-wrap: wrap;
   gap: 15px;
   height: 100%;
+  overflow: hidden;
 }
 
-.beachMiniContainer {
+.gameMiniContainer {
   display: flex;
   flex-direction: column;
-  cursor: pointer;
 }
 
-.beachMiniContainer > h2 {
+.gameMiniContainer > h2 {
   margin: 0;
   width: fit-content;
   padding-left: 2px;
 }
 
-.beachMiniImg {
+.gameMiniImg {
   height: 400px;
   width: 400px;
-  border-radius: 15px;
+  border-radius: 25px;
   object-fit: cover;
 }
 
@@ -67,7 +67,7 @@ body {
   width: 100vw;
 }
 
-.beachContainer {
+.gameContainer {
   display: flex;
   justify-content: center;
   align-self: center;
@@ -76,13 +76,13 @@ body {
   position: relative;
 }
 
-.beachImgContainer {
+.gameImgContainer {
   position: relative;
   width: 85%;
   height: 80vh;
 }
 
-.beachImg {
+.gameImg {
   position: absolute;
   top: 0;
   left: 0;
@@ -166,20 +166,45 @@ body {
   display: flex;
 }
 
-@media screen and (max-width: 1024px) {
-  .beachContainer {
-    flex-direction: column;
+.gameLeaderboard {
+  cursor: pointer;
+}
+
+.slide-down {
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: slideDown 0.3s ease-in-out forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
-  .beachImg {
-    width: 100vw;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media screen and (max-width: 1439px) {
-  .beachContainer {
+.slide-up {
+  animation: slideUpp 2s ease-in-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(20px);
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .gameContainer {
     flex-direction: column;
   }
-  .beachImg {
+  .gameImg {
     width: 100vw;
   }
 }

@@ -117,11 +117,12 @@ export function Beach() {
     }, [charClicked]);
 
     useEffect(() => {
-        fetch("/data").then(
+        fetch("/data/beach").then(
             response => response.json()
         ).then(
             data => {
                 setCharCoords(data)
+                console.log(data)
             }
         )
     }, [])
@@ -184,10 +185,11 @@ export function Beach() {
     }
 
     const sendScore = async (nickName) => {
+        let game = "beach"
         let name = nickName
         let time = formatTime(milliseconds)
         try {
-            const response = await axios.post('/scores', { name: name, time: time })
+            const response = await axios.post('/scores', { game: game, name: name, time: time })
             console.log(response.data);
         } catch (error) {
             console.log('Error sending data to express:', error)
@@ -197,15 +199,17 @@ export function Beach() {
   return (
     <div className='beachMain'>
         <div className='header'>
-            <Link to="/" className='waldoHeaderImg'>
-                <img className='waldoHeaderImg' src={waldoHeader} alt='Main in red and white striped hat in shirt with round glasses next to sign that reads Wheres Waldo?'></img>
-            </Link>
+            <img className='waldoHeaderImg' src={waldoHeader} alt='Main in red and white striped hat in shirt with round glasses next to sign that reads Wheres Waldo?'></img>
             <div className='headerBtns'>
-                <button className='homeBtn'>Home</button>
-                <button className='leaderboardBtn'>Leaderboard</button>
+                <Link to="/">
+                    <button className='homeBtn'>Home</button>
+                </Link>
+                <Link to="/leaderboard">
+                    <button className='leaderboardBtn'>Leaderboard</button>
+                </Link>
             </div>
         </div>
-        <div className='beachContainer'>
+        <div className='gameContainer'>
             <div>{winDiv.map(div => div)}</div>
             <div className='charactersContainer'>
                 <div className='characterContainer'>
@@ -222,8 +226,8 @@ export function Beach() {
                 </div>
                 <p>{formatTime(milliseconds)}</p>
             </div>
-            <div className='beachImgContainer'>
-                <img ref={imageRef} className='beachImg' src={beachImg} onClick={handleClick}></img>
+            <div className='gameImgContainer'>
+                <img ref={imageRef} className='gameImg' src={beachImg} onClick={handleClick}></img>
                 {divs}
             </div>
         </div>
