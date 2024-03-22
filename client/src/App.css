@@ -109,8 +109,9 @@ h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  border: 3px solid black;
+  border: 3px solid #ED2724;
   border-radius: 15px;
+  cursor: crosshair;
 }
 
 .charactersContainer {
@@ -119,6 +120,7 @@ h2 {
   align-items: center;
   flex-direction: column;
   padding-right: 15px;
+  font-family: 'Optima', 'Courier New', Courier, monospace;
 }
 
 .characterContainer {
@@ -126,19 +128,41 @@ h2 {
   flex-direction: column;
   align-items: center;
   color: white;
+  font-family: 'Optima', 'Courier New', Courier, monospace;
+  font-size: .9rem;
 }
 
-.waldoImg, .wizardImg {
+.waldoImage {
   padding-right: 3px;
 }
 
-.waldoImg, .wizardImg, .odlawImg {
+.wizardImage{
+  padding-right: 5px;
+}
+
+.waldoImage, .wizardImage, .odlawImage {
   height: 115px;
 }
 
-.characterContainer > h2 {
-  margin: 0;
+.characterTitle {
+  margin: 5px;
   width: fit-content;
+  color: #2B2A2A;
+  transition: color 0.3s ease;
+}
+
+.foundImage {
+  opacity: 50%;
+  height: 115px;
+  transition: opacity 1s ease;
+  padding-right: 5px;
+}
+
+.foundText {
+  color: rgb(0, 207, 0);
+  margin: 5px;
+  width: fit-content;
+  transition: color 0.3s ease;
 }
 
 .targetBox {
@@ -149,12 +173,15 @@ h2 {
 }
 
 .waldoBtn, .odlawBtn {
-  background-color: blue;
+  background-color: #BAD7E9;
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 5px;
   padding-bottom: 5px;
   cursor: pointer;
+  font-family: 'Optima', 'Courier New', Courier, monospace;
+  font-size: .9rem;
+
 }
 
 .waldoBtn {
@@ -163,12 +190,17 @@ h2 {
 
 .wizardBtn {
   margin-bottom: -60px;
-  background-color: blue;
+  background-color: #BAD7E9;
   padding-left: 13px;
   padding-right: 13px;
   padding-top: 5px;
   padding-bottom: 5px;
   cursor: pointer;
+  font-family: 'Optima', 'Courier New', Courier, monospace;
+  font-size: .9rem;
+}
+.waldoBtn:hover, .wizardBtn:hover, .odlawBtn:hover {
+  background-color: #8CB9D4;
 }
 
 .odlawBtn {
@@ -180,11 +212,45 @@ h2 {
 }
 
 .winScreenContainer {
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 40%;
+  right: 34%;
+  z-index: 999;
+  background-color: #BAD7E9;
+  padding: 20px;
+  border-radius: 15px;
+  font-family: 'Optima', 'Courier New', Courier, monospace;
 }
 
 .nicknameForm {
   display: flex;
+  gap: 5px;
+}
+
+.nicknameInput {
+  background: none;
+  border: 1px solid #2B2A2A;
+  border-radius: 5px;
+  font-family: 'Optima', 'Courier New', Courier, monospace;
+
+}
+
+.nicknameSubmit {
+  font-family: 'Optima', 'Courier New', Courier, monospace;
+  font-size: .9rem;
+  cursor: pointer;
+  border: none;
+  background: none;
+  text-decoration: underline;
+  border-radius: 5px;
+}
+
+.nicknameSubmit:hover {
+  color: #ED2724;
+  transition: color 0.3s ease;
 }
 
 .gameLeaderboard {
@@ -279,6 +345,11 @@ h2 {
   0%, to { transform: translateX(0); }
   50% { transform: translateX(100%); }
   51% { transform: translateX(-100%); }
+}
+
+.timer {
+  font-family: 'Optima', 'Courier New', Courier, monospace;
+  font-size: 1rem;
 }
 
 

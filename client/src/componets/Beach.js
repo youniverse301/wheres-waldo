@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../App.css'
 import axios from 'axios';
 import waldoHeader from '../images/waldo-header.png'
@@ -7,13 +7,15 @@ import beachImg from '../images/beach.jpeg'
 import waldoImg from '../images/waldoImg.png'
 import wizardImg from '../images/wizardImg.gif'
 import odlawImg from '../images/odlawImg.gif'
+var Filter = require('bad-words'),
+filter = new Filter();
 
 
 export function Beach() {
     const imageRef = useRef(null);
     const targetRef = useRef(null);
-    const [clickCoordinates, setClickCoordinates] = useState([]);
-    const [divs, setDivs] = useState([]);
+    const navigate = useNavigate();
+    const [targetDivs, setTargetDivs] = useState([]);
     const [charCoords, setCharCoords] = useState([{}]);
     const [milliseconds, setMilliseconds] = useState(0);
     const [isRunning, setIsRunning] = useState(true);
@@ -22,6 +24,13 @@ export function Beach() {
     const [odlawClicked, setOdlawClicked] = useState(false);
     const [charClicked, setCharClicked] = useState(0);
     const [winDiv, setWinDiv] = useState([]);
+    const [waldoTitle, setWaldoTitle] = useState('characterTitle')
+    const [waldoImage, setWaldoImage] = useState('waldoImage')
+    const [wizardTitle, setWizardTitle] = useState('characterTitle')
+    const [wizardImage, setWizardImage] = useState('wizardImage')
+    const [odlawTitle, setOdlawTitle] = useState('characterTitle')
+    const [odlawImage, setOdlawImage] = useState('odlawImage')
+    
 
     const handleClick = (event)  => {
         const imageRect = imageRef.current.getBoundingClientRect();
@@ -29,42 +38,37 @@ export function Beach() {
         const yPercentage = (event.clientY - imageRect.top) / imageRect.height;
         const x = xPercentage * imageRef.current.naturalWidth;
         const y = yPercentage * imageRef.current.naturalHeight;
-        const newCoordinates = { x, y };
-        setClickCoordinates(prevCoordinates => [...prevCoordinates, newCoordinates]);
 
         function handleWaldoClick() {
-            console.log(newCoordinates)
             if (isWithinRange(x, y, charCoords[0])) {
-                console.log('in')
                 targetRef.current.parentNode.removeChild(targetRef.current);
                 setWaldoClicked(true)
+                setWaldoTitle('foundText')
+                setWaldoImage('foundImage')
                 setCharClicked(prevCharClicked => prevCharClicked +1)
               } else {
-                console.log("no")
                 targetRef.current.parentNode.removeChild(targetRef.current);
               }
         }
         function handleWizardClick() {
-            console.log(newCoordinates)
             if (isWithinRange(x, y, charCoords[1])) {
-                console.log('in')
                 targetRef.current.parentNode.removeChild(targetRef.current);
                 setWizardClicked(true)
+                setWizardTitle('foundText')
+                setWizardImage('foundImage')
                 setCharClicked(prevCharClicked => prevCharClicked +1)
               } else {
-                console.log("no")
                 targetRef.current.parentNode.removeChild(targetRef.current);
               }
         }
         function handleOdlawClick() {
-            console.log(newCoordinates)
             if (isWithinRange(x, y, charCoords[2])) {
-                console.log('in')
                 targetRef.current.parentNode.removeChild(targetRef.current);
                 setOdlawClicked(true)
+                setOdlawTitle('foundText')
+                setOdlawImage('foundImage')
                 setCharClicked(prevCharClicked => prevCharClicked +1)
               } else {
-                console.log("no")
                 targetRef.current.parentNode.removeChild(targetRef.current);
               }
         }
@@ -75,10 +79,10 @@ export function Beach() {
             const waldoClass = waldoClicked ? 'hidden' : 'waldoBtn';
             const wizardClass = wizardClicked ? 'hidden' : 'wizardBtn';
             const odlawClass = odlawClicked ? 'hidden' : 'odlawBtn';
-            setDivs([
-                ...divs,
+            setTargetDivs([
+                ...targetDivs,
                 <div
-                key={divs.length}
+                key={targetDivs.length}
                 ref={targetRef}         
                   className='targetBox'
                   style={{
@@ -87,7 +91,7 @@ export function Beach() {
                     top: event.clientY - imageRect.top -25,
                     width: '50px',
                     height: '50px',
-                    border: '3px solid red',
+                    border: '3px solid #ED2724',
                   }}
                 >
                   <div className={odlawClass} onClick={handleOdlawClick}>Odlaw</div>
@@ -95,22 +99,11 @@ export function Beach() {
                   <div className={waldoClass}  onClick={handleWaldoClick}>Waldo</div>
                 </div>,
                 ]);
-              console.log(targetRef.current)
         }
     }
 
     useEffect(() => {
-        console.log(clickCoordinates);
-    }, [clickCoordinates]);
-
-    useEffect(() => {
-        console.log(waldoClicked);
-    }, [waldoClicked]);
-
-    useEffect(() => {
-        console.log(charClicked);
         if (charClicked >= 3) {
-            console.log('winner winner chicken dinner')
             toggleTimer()
             displayWin()
         }
@@ -122,7 +115,6 @@ export function Beach() {
         ).then(
             data => {
                 setCharCoords(data)
-                console.log(data)
             }
         )
     }, [])
@@ -156,28 +148,20 @@ export function Beach() {
         setIsRunning(prevIsRunning => !prevIsRunning);
     };
 
-    const toggleWaldo = () => {
-        setWaldoClicked(prevwaldoClicked => !prevwaldoClicked);
-    };
-    
-    const resetTimer = () => {
-        setMilliseconds(0);
-        setIsRunning(false);
-    };
-
     const displayWin = () => {
         const handleSubmit = (event) => {
             event.preventDefault();
             const nickName = event.target.nicknameInput.value;
             sendScore(nickName);
+            navigate('/')
         };
         const appendWinDiv = 
         <div key={winDiv.length} className='winScreenContainer'>
-            <h2>You won!</h2>
+            <h2>You won with a time of {formatTime(milliseconds)}!</h2>
             <p>Please insert a nickname</p>
             <form className='nicknameForm' onSubmit={handleSubmit}>
-                <input type='text' className='nicknameInput' name='nicknameInput'></input>
-                <input type='submit' value='Submit'></input>
+                <input type='text' className='nicknameInput' name='nicknameInput' maxLength={50}></input>
+                <input type='submit' value='Submit' className='nicknameSubmit'></input>
             </form>
         </div>;
 
@@ -186,7 +170,7 @@ export function Beach() {
 
     const sendScore = async (nickName) => {
         let game = "beach"
-        let name = nickName
+        let name = filter.clean(nickName)
         let time = formatTime(milliseconds)
         try {
             const response = await axios.post('/scores', { game: game, name: name, time: time })
@@ -210,25 +194,25 @@ export function Beach() {
             </div>
         </div>
         <div className='gameContainer'>
-            <div>{winDiv.map(div => div)}</div>
+            {winDiv.map(div => div)}
             <div className='charactersContainer'>
                 <div className='characterContainer'>
-                    <img className='waldoImg' src={waldoImg}></img>
-                    <h2>Waldo</h2>
+                    <img className={waldoImage} src={waldoImg}></img>
+                    <h2 className={waldoTitle}>Waldo</h2>
                 </div>
                 <div className='characterContainer'>
-                    <img className='wizardImg' src={wizardImg}></img>
-                    <h2>Wizard</h2>
+                    <img className={wizardImage} src={wizardImg}></img>
+                    <h2 className={wizardTitle}>Wizard</h2>
                 </div>
                 <div className='characterContainer'>
-                    <img className='odlawImg' src={odlawImg}></img>
-                    <h2>Odlaw</h2>
+                    <img className={odlawImage} src={odlawImg}></img>
+                    <h2 className={odlawTitle}>Odlaw</h2>
                 </div>
-                <p>{formatTime(milliseconds)}</p>
+                <p className='timer'>{formatTime(milliseconds)}</p>
             </div>
             <div className='gameImgContainer'>
                 <img ref={imageRef} className='gameImg' src={beachImg} onClick={handleClick}></img>
-                {divs}
+                {targetDivs}
             </div>
         </div>
     </div>
