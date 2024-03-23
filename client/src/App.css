@@ -352,6 +352,73 @@ h2 {
   font-size: 1rem;
 }
 
+.leaderboardMain {
+  display: flex;
+  flex-direction: column;
+  background-color: #BAD7E9;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.leaderboardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Optima', 'Courier New', Courier, monospace;
+}
+
+.leaderboardTitle {
+  font-size: 3.5rem;
+  margin: 0;
+  padding-bottom: 20px;
+}
+
+.gameBtns {
+  display: flex;
+  padding-bottom: 15px;
+}
+
+.gameBtns > button {
+  font-family: 'Optima', 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  background: none;
+  text-decoration: underline;
+  border-radius: 5px;
+}
+
+.gameBtns > button:hover {
+  color: #ED2724;
+  transition: color 0.3s ease;
+}
+
+.leaderboardScores {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 25px;
+}
+
+.scoreCard{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
+  position: relative;
+  border: 3px solid #ED2724;
+  padding: 10px;
+}
+
+.scoreCard > p {
+  margin: 0;
+}
+
+.scoreCardIndex {
+  position: absolute;
+  top: 8%;
+  left: 3%;
+}
 
 @media screen and (max-width: 1024px) {
   .gameContainer {

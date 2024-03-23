@@ -7,7 +7,8 @@ import factoryImg from '../images/factory.jpeg'
 import waldoImg from '../images/waldoImg.png'
 import wendaImg from '../images/wenda.png'
 import odlawImg from '../images/odlawImg.gif'
-
+var Filter = require('bad-words'),
+filter = new Filter();
 
 export function Factory() {
     const imageRef = useRef(null);
@@ -166,12 +167,11 @@ export function Factory() {
     }
 
     const sendScore = async (nickName) => {
-        let game = "factory"
-        let name = nickName
+        let game = "Factory"
+        let name = filter.clean(nickName)
         let time = formatTime(milliseconds)
         try {
-            const response = await axios.post('/scores', { game:game, name: name, time: time })
-            console.log(response.data);
+            await axios.post('/scores', { game:game, name: name, time: time })
         } catch (error) {
             console.log('Error sending data to express:', error)
         }

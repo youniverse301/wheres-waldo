@@ -8,8 +8,7 @@ import waldoImg from '../images/waldoImg.png'
 import wizardImg from '../images/wizardImg.gif'
 import odlawImg from '../images/odlawImg.gif'
 var Filter = require('bad-words'),
-filter = new Filter();
-
+filter = new Filter()
 
 export function Beach() {
     const imageRef = useRef(null);
@@ -169,12 +168,11 @@ export function Beach() {
     }
 
     const sendScore = async (nickName) => {
-        let game = "beach"
+        let game = "Beach"
         let name = filter.clean(nickName)
         let time = formatTime(milliseconds)
         try {
-            const response = await axios.post('/scores', { game: game, name: name, time: time })
-            console.log(response.data);
+            await axios.post('/scores', { game: game, name: name, time: time })
         } catch (error) {
             console.log('Error sending data to express:', error)
         }
