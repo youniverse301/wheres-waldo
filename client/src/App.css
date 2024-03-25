@@ -407,7 +407,9 @@ h2 {
   width: 350px;
   position: relative;
   border: 3px solid #ED2724;
-  padding: 10px;
+  padding:  15px 0px;
+  border-radius: 8px;
+  gap: 5px;
 }
 
 .scoreCard > p {
@@ -420,11 +422,52 @@ h2 {
   left: 3%;
 }
 
-@media screen and (max-width: 1024px) {
+.github {
+  align-self: center;
+  margin-bottom: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .waldoHeaderImg {
+    width: 150px;
+    height: 100px;
+  }
+  .homeBtn, .leaderboardBtn {
+    font-size: 1.1rem;
+  }
+  .charactersContainer {
+    flex-direction: row;
+    padding: 0;
+    gap: 5px;
+  }
+  .waldoImage, .wizardImage, .odlawImage, .foundImage {
+    height: 85px;
+  }
+  .foundText, .characterTitle {
+    font-size: 1.1rem;
+  }
   .gameContainer {
     flex-direction: column;
+    height: 85vh;
+  }
+  .gameImgContainer {
+    position: relative;
+    width: 99%;
+    height: 45vh;
+    margin-bottom: 75px;
   }
   .gameImg {
-    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 3px solid #ED2724;
+    border-radius: 15px;
+    cursor: crosshair;
+  }
+  .winScreenContainer {
+    position: initial;
+    text-align: center;
   }
 }

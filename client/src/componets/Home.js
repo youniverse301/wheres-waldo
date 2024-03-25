@@ -5,6 +5,7 @@ import waldoHeader from '../images/waldo-header.png'
 import beachMini2 from '../images/beachMini2.jpeg'
 import factoryMini from '../images/factoryMini.jpeg'
 import skislopeMini from '../images/skislopeMini.png'
+import githubImg from '../images/github.png'
 
 export function Home() {
     const [beachLeaderboard, setBeachLeaderboard] = useState([{}]);
@@ -139,7 +140,9 @@ export function Home() {
             </div>
         </div>
       </div>
-      <div>footer</div>
+      <a className='github' href='https://github.com/youniverse301/wheres-waldo'>
+        <img src={githubImg}></img>
+      </a>
     </div>
   )
 }

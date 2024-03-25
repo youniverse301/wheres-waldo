@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import waldoHeader from '../images/waldo-header.png';
 import '../App.css';
+import githubImg from '../images/github.png'
+
 
 export function Leaderboard() {
     const [leaderboardData, setLeaderboardData] = useState([]);
@@ -47,6 +49,9 @@ export function Leaderboard() {
                         </div>
                     ))}
                 </div>
+                <a className='github' href='https://github.com/youniverse301/wheres-waldo'>
+                    <img src={githubImg}></img>
+                </a>
             </div>
         </div>
     );

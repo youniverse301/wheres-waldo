@@ -172,7 +172,7 @@ export function Skislope() {
         };
         const appendWinDiv = 
         <div key={winDiv.length} className='winScreenContainer'>
-            <h2>You won!</h2>
+            <h2>You won with a time of {formatTime(milliseconds)}!</h2>
             <p>Please insert a nickname</p>
             <form className='nicknameForm' onSubmit={handleSubmit}>
                 <input type='text' className='nicknameInput' name='nicknameInput' maxLength={25}></input>
