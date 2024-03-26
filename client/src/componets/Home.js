@@ -35,7 +35,7 @@ export function Home() {
       fetchData("https://wheres-waldo-87gl.onrender.com/lowesttime/beach")
 
     useEffect(() => {
-        fetch("/lowestTime/beach").then(
+        fetch("https://wheres-waldo-87gl.onrender.com/lowesttime/beach").then(
             response => response.json()
         ).then(
             data => {
