@@ -194,21 +194,21 @@ export function Factory() {
             <div>{winDiv.map(div => div)}</div>
             <div className='charactersContainer'>
                 <div className='characterContainer'>
-                    <img className={waldoImage} src={waldoImg}></img>
+                    <img className={waldoImage} src={waldoImg} alt='masculine person wearing red and white stripes'></img>
                     <h2 className={waldoTitle}>Waldo</h2>
                 </div>
                 <div className='characterContainer'>
-                    <img className={wendaImage} src={wendaImg}></img>
+                    <img className={wendaImage} src={wendaImg} alt='feminine person wearing red and white stripes'></img>
                     <h2 className={wendaTitle}>Wenda</h2>
                 </div>
                 <div className='characterContainer'>
-                    <img className={odlawImage} src={odlawImg}></img>
+                    <img className={odlawImage} src={odlawImg} alt='masculine person in black and yellow stripped shirt with round glasses'></img>
                     <h2 className={odlawTitle}>Odlaw</h2>
                 </div>
                 <p>{formatTime(milliseconds)}</p>
             </div>
             <div className='gameImgContainer'>
-                <img ref={imageRef} className='gameImg' src={factoryImg} onClick={handleClick}></img>
+                <img ref={imageRef} className='gameImg' src={factoryImg} onClick={handleClick} alt='wheres waldo factory map'></img>
                 {targetDivs}
             </div>
         </div>

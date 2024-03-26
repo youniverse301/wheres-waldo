@@ -195,21 +195,21 @@ export function Beach() {
             {winDiv.map(div => div)}
             <div className='charactersContainer'>
                 <div className='characterContainer'>
-                    <img className={waldoImage} src={waldoImg}></img>
+                    <img className={waldoImage} src={waldoImg} alt='masculine person wearing red and white stripes'></img>
                     <h2 className={waldoTitle}>Waldo</h2>
                 </div>
                 <div className='characterContainer'>
-                    <img className={wizardImage} src={wizardImg}></img>
+                    <img className={wizardImage} src={wizardImg} alt='elderly looking wizard with long white beard and red white and blue pole'></img>
                     <h2 className={wizardTitle}>Wizard</h2>
                 </div>
                 <div className='characterContainer'>
-                    <img className={odlawImage} src={odlawImg}></img>
+                    <img className={odlawImage} src={odlawImg} alt='masculine person in black and yellow stripped shirt with round glasses'></img>
                     <h2 className={odlawTitle}>Odlaw</h2>
                 </div>
                 <p className='timer'>{formatTime(milliseconds)}</p>
             </div>
             <div className='gameImgContainer'>
-                <img ref={imageRef} className='gameImg' src={beachImg} onClick={handleClick}></img>
+                <img ref={imageRef} className='gameImg' src={beachImg} onClick={handleClick} alt='wheres waldo beach map'></img>
                 {targetDivs}
             </div>
         </div>

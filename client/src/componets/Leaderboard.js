@@ -50,7 +50,7 @@ export function Leaderboard() {
                     ))}
                 </div>
                 <a className='github' href='https://github.com/youniverse301/wheres-waldo'>
-                    <img src={githubImg}></img>
+                    <img src={githubImg} alt='github logo'></img>
                 </a>
             </div>
         </div>

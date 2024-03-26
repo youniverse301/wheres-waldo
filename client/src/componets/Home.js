@@ -86,7 +86,7 @@ export function Home() {
         </div>
       <div className={`games ${isBeachOpen ? 'slide-up' : ' '}`}>
           <div className='gameMiniContainer'>
-            <img className='gameMiniImg' src={beachMini2}></img>
+            <img className='gameMiniImg' src={beachMini2} alt='small image of wheres waldo beach map'></img>
             <div className='gameTextContainer'>
                 <Link to="/beach">
                     <h2>Start game</h2>
@@ -104,7 +104,7 @@ export function Home() {
             </div>
           </div>
         <div className='gameMiniContainer'>
-          <img className='gameMiniImg' src={factoryMini}></img>
+          <img className='gameMiniImg' src={factoryMini} alt='small image of wheres factory map'></img>
           <div className='gameTextContainer'>
                 <Link to="/factory">
                     <h2>Start game</h2>
@@ -122,7 +122,7 @@ export function Home() {
             </div>
         </div>
         <div className='gameMiniContainer'>
-          <img className='gameMiniImg' src={skislopeMini}></img>
+          <img className='gameMiniImg' src={skislopeMini} alt='small image of wheres waldo ski slope map'></img>
           <div className='gameTextContainer'>
                 <Link to="/skislope">
                     <h2>Start game</h2>
@@ -141,7 +141,7 @@ export function Home() {
         </div>
       </div>
       <a className='github' href='https://github.com/youniverse301/wheres-waldo'>
-        <img src={githubImg}></img>
+        <img src={githubImg} alt='github logo'></img>
       </a>
     </div>
   )
