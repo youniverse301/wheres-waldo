@@ -10,7 +10,7 @@ export function Leaderboard() {
     const [selectedGame, setSelectedGame] = useState('all');
 
     useEffect(() => {
-        fetch(`/lowestTime/${selectedGame === 'all' ? '' : selectedGame}`).then(
+        fetch(`https://wheres-waldo-87gl.onrender.com/lowestTime/${selectedGame === 'all' ? '' : selectedGame}`).then(
             response => response.json()
         ).then(
             data => {

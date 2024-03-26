@@ -109,7 +109,7 @@ export function Beach() {
     }, [charClicked]);
 
     useEffect(() => {
-        fetch("/data/beach").then(
+        fetch("https://wheres-waldo-87gl.onrender.com/data/beach").then(
             response => response.json()
         ).then(
             data => {
@@ -172,7 +172,7 @@ export function Beach() {
         let name = filter.clean(nickName)
         let time = formatTime(milliseconds)
         try {
-            await axios.post('/scores', { game: game, name: name, time: time })
+            await axios.post('https://wheres-waldo-87gl.onrender.com/scores', { game: game, name: name, time: time })
         } catch (error) {
             console.log('Error sending data to express:', error)
         }

@@ -18,22 +18,6 @@ export function Home() {
     const [isSkislopeOpen, setIsSkislopeOpen] = useState(false);
     const [skiSlopeLeaderboardText, setSkislopeLeaderboardText] = useState('Show top 5 scores')
 
-    async function fetchData(url) {
-        try {
-          const response = await fetch(url);
-          console.log(response)
-          if (!response.ok) {
-            throw new Error(`Failed to fetch data: ${response.status}`);
-          }
-          const data = await response.json(); // Parse response as JSON
-          return data;
-        } catch (error) {
-          console.error('Error fetching data:', error);
-          // Handle error gracefully (e.g., display an error message to the user)
-        }
-      }
-      fetchData("https://wheres-waldo-87gl.onrender.com/lowesttime/beach")
-
     useEffect(() => {
         fetch("https://wheres-waldo-87gl.onrender.com/lowesttime/beach").then(
             response => response.json()
@@ -44,7 +28,7 @@ export function Home() {
         )
     }, [])
     useEffect(() => {
-        fetch("/lowestTime/factory").then(
+        fetch("https://wheres-waldo-87gl.onrender.com/lowestTime/factory").then(
             response => response.json()
         ).then(
             data => {
@@ -53,7 +37,7 @@ export function Home() {
         )
     }, [])
     useEffect(() => {
-        fetch("/lowestTime/skislope").then(
+        fetch("https://wheres-waldo-87gl.onrender.com/lowestTime/skislope").then(
             response => response.json()
         ).then(
             data => {
