@@ -432,8 +432,11 @@ h2 {
     width: 150px;
     height: 100px;
   }
+  .headerBtns {
+    padding: 0px;
+  }
   .homeBtn, .leaderboardBtn {
-    font-size: 1.1rem;
+    font-size: .9rem;
   }
   .charactersContainer {
     flex-direction: row;
@@ -469,5 +472,12 @@ h2 {
   .winScreenContainer {
     position: initial;
     text-align: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .gameMiniImg {
+    height: 350px;
+    width: 350px;
   }
 }
