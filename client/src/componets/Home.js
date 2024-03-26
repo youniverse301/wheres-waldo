@@ -19,7 +19,7 @@ export function Home() {
     const [skiSlopeLeaderboardText, setSkislopeLeaderboardText] = useState('Show top 5 scores')
 
     useEffect(() => {
-        fetch("https://wheres-waldo-87gl.onrender.com/lowesttime/beach").then(
+        fetch("https://wheres-waldo-api-production-9c5a.up.railway.app/lowestTime/beach").then(
             response => response.json()
         ).then(
             data => {
@@ -28,7 +28,7 @@ export function Home() {
         )
     }, [])
     useEffect(() => {
-        fetch("https://wheres-waldo-87gl.onrender.com/lowestTime/factory").then(
+        fetch("https://wheres-waldo-api-production-9c5a.up.railway.app/lowestTime/factory").then(
             response => response.json()
         ).then(
             data => {
@@ -37,7 +37,7 @@ export function Home() {
         )
     }, [])
     useEffect(() => {
-        fetch("https://wheres-waldo-87gl.onrender.com/lowestTime/skislope").then(
+        fetch("https://wheres-waldo-api-production-9c5a.up.railway.app/lowestTime/skislope").then(
             response => response.json()
         ).then(
             data => {

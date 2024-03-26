@@ -18,9 +18,9 @@
     "start": "react-scripts start",
     "build": "CI=false react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build && railway deploy"
   },
-  "proxy": "https://wheres-waldo-87gl.onrender.com",
   "eslintConfig": {
     "extends": [
       "react-app",

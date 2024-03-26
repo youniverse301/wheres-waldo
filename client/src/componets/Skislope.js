@@ -171,7 +171,7 @@ export function Skislope() {
         let name = filter.clean(nickName)
         let time = formatTime(milliseconds)
         try {
-            await axios.post('https://wheres-waldo-87gl.onrender.com/scores', { game:game, name: name, time: time })
+            await axios.post('https://wheres-waldo-api-production-9c5a.up.railway.app/scores', { game:game, name: name, time: time })
         } catch (error) {
             console.log('Error sending data to express:', error)
         }
@@ -185,7 +185,7 @@ export function Skislope() {
     }, [charClicked, displayWin]);
 
     useEffect(() => {
-        fetch("https://wheres-waldo-87gl.onrender.com/data/skislope").then(
+        fetch("https://wheres-waldo-api-production-9c5a.up.railway.app/data/skislope").then(
             response => response.json()
         ).then(
             data => {
