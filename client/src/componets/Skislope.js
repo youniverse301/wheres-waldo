@@ -117,23 +117,6 @@ export function Skislope() {
         }
     }
 
-    useEffect(() => {
-        if (charClicked >= 4) {
-            toggleTimer()
-            displayWin()
-        }
-    }, [charClicked]);
-
-    useEffect(() => {
-        fetch("/data/skislope").then(
-            response => response.json()
-        ).then(
-            data => {
-                setCharCoords(data)
-            }
-        )
-    }, [])
-
     function isWithinRange(x, y, coords) {
         const range = 50;
         const diffX = Math.abs(x - coords.x);
@@ -193,6 +176,23 @@ export function Skislope() {
             console.log('Error sending data to express:', error)
         }
     }
+
+    useEffect(() => {
+        if (charClicked >= 4) {
+            toggleTimer()
+            displayWin()
+        }
+    }, [charClicked, displayWin]);
+
+    useEffect(() => {
+        fetch("/data/skislope").then(
+            response => response.json()
+        ).then(
+            data => {
+                setCharCoords(data)
+            }
+        )
+    }, [])
 
   return (
     <div className='beachMain'>

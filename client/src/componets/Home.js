@@ -86,7 +86,7 @@ export function Home() {
         </div>
       <div className={`games ${isBeachOpen ? 'slide-up' : ' '}`}>
           <div className='gameMiniContainer'>
-            <img className='gameMiniImg' src={beachMini2} alt='small image of wheres waldo beach map'></img>
+            <img className='gameMiniImg' src={beachMini2} alt='small version of wheres waldo beach map'></img>
             <div className='gameTextContainer'>
                 <Link to="/beach">
                     <h2>Start game</h2>
@@ -104,7 +104,7 @@ export function Home() {
             </div>
           </div>
         <div className='gameMiniContainer'>
-          <img className='gameMiniImg' src={factoryMini} alt='small image of wheres factory map'></img>
+          <img className='gameMiniImg' src={factoryMini} alt='small version of wheres factory map'></img>
           <div className='gameTextContainer'>
                 <Link to="/factory">
                     <h2>Start game</h2>
@@ -122,7 +122,7 @@ export function Home() {
             </div>
         </div>
         <div className='gameMiniContainer'>
-          <img className='gameMiniImg' src={skislopeMini} alt='small image of wheres waldo ski slope map'></img>
+          <img className='gameMiniImg' src={skislopeMini} alt='small version of wheres waldo ski slope map'></img>
           <div className='gameTextContainer'>
                 <Link to="/skislope">
                     <h2>Start game</h2>
