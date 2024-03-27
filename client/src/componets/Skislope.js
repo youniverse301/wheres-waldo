@@ -182,7 +182,7 @@ export function Skislope() {
             toggleTimer()
             displayWin()
         }
-    }, [charClicked, displayWin]);
+    }, [charClicked]);
 
     useEffect(() => {
         fetch("https://wheres-waldo-api-production-9c5a.up.railway.app/data/skislope").then(
